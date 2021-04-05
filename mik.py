@@ -1,0 +1,5 @@
+print("Hi, I am chatbot. Please state your name\n")
+name=str(input())
+print("\nThank you",name,", How can i help you?\n")
+key=str(input())
+print('\nSearching for "',key,'"...')
