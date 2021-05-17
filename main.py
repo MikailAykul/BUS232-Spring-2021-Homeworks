@@ -1,20 +1,4 @@
+primes=[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67,71]
 
-x = int(input("What is your birth year: "))
-if x < 1900:
-    print("You are from Lost Generation.")
-elif x < 1927:
-    print("You are from Greatest Generation.")
-elif x < 1945:
-    print("You are from Silent Generation.")
-elif x < 1964:
-    print("You are from Baby boomers.")
-elif x < 1980:
-    print("You are from Generation X.")
-elif x < 1996:
-    print("You are from Millennials.")
-elif x < 2012:
-    print("You are from Generation Z.")
-else:
-    print("You are from Generation Alpha.")
-
-    
+for i in range(0,20):
+  print("fake prime in position", i+1," is ",primes[i]*primes[i+1])
