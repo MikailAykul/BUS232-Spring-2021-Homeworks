@@ -1,0 +1,52 @@
+import xlrd
+import xlsxwriter
+
+dataarray = []
+
+int = xlrd.open_workbook("C:/Users/wib/Desktop/hw9/intere.xls")
+sheet = int.sheet_by_index(0)
+sheet.cell_value(0, 0)
+interest = sheet.row_values(253)
+dataarray.append(interest[5:])
+
+inf = xlrd.open_workbook("C:/Users/wib/Desktop/hw9/inf.xls")
+sheet = inf.sheet_by_index(0)
+sheet.cell_value(0, 0)
+inf = sheet.row_values(253)
+dataarray.append(inf[5:])
+
+un = xlrd.open_workbook("C:/Users/wib/Desktop/hw9/unemp.xls")
+sheet = un.sheet_by_index(0)
+sheet.cell_value(0, 0)
+unemployment = sheet.row_values(253)
+dataarray.append(unemployment[5:])
+
+gdp = xlrd.open_workbook("C:/Users/wib/Desktop/hw9/gdp.xls")
+sheet = gdp.sheet_by_index(0)
+sheet.cell_value(0, 0)
+gdppc = sheet.row_values(253)
+dataarray.append(gdppc[5:])
+hami=[]
+
+for i in range(len(dataarray[0])-1):
+    hami.append((dataarray[0][i]+dataarray[1][i]+dataarray[2][i]-dataarray[3][i]))
+dataarray.append(hami)
+
+finalbook = xlsxwriter.Workbook('C:/Users/wib/Desktop/hw9/hamiUSA.xlsx')
+finalsheet = finalbook.add_worksheet()
+
+finalsheet.write(0, 0, "Interest rate")
+finalsheet.write(1, 0, "Inflation rate")
+finalsheet.write(2, 0, "Unemployment rate")
+finalsheet.write(3, 0, "GDP pc rate")
+finalsheet.write(4, 0, "HAMI 1961-2020")
+
+
+for j in range(len(hami)):
+    for i in range(len(dataarray)):
+        finalsheet.write(i, j+1, dataarray[i][j])
+
+finalbook.close()
+    
+
+
